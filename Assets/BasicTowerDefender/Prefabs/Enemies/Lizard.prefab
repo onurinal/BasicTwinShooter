@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1443217567785435965}
   - component: {fileID: 7514063844543563686}
   - component: {fileID: 5709499621501237462}
+  - component: {fileID: 6703671084238326275}
   - component: {fileID: 4604456490090694853}
   m_Layer: 0
   m_Name: Lizard Model
@@ -107,6 +108,75 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!60 &6703671084238326275
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3044427994606106058}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.51, y: 1.86}
+    newSize: {x: 0.83, y: 0.88}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.074999996, y: -0.59}
+      - {x: -0.074999996, y: -0.52}
+      - {x: -0.095, y: -0.48}
+      - {x: -0.225, y: -0.48999998}
+      - {x: -0.315, y: -0.24}
+      - {x: -0.375, y: -0.17}
+      - {x: -0.42499998, y: 0.099999994}
+      - {x: -0.48499998, y: 0.17999999}
+      - {x: -0.7401353, y: 0.17999999}
+      - {x: -0.885, y: -0.04}
+      - {x: -0.905, y: -0.11}
+      - {x: -0.90334237, y: -0.1766847}
+      - {x: -0.86929274, y: -0.21047795}
+      - {x: -0.835, y: -0.22999999}
+      - {x: -0.78499997, y: -0.24}
+      - {x: -0.805, y: -0.26}
+      - {x: -0.84013534, y: -0.35513523}
+      - {x: -0.745, y: -0.42999998}
+      - {x: -0.805, y: -0.59}
+      - {x: -0.78499997, y: -0.65}
+      - {x: -0.72499996, y: -0.68}
+      - {x: -0.39499998, y: -0.68}
+      - {x: -0.325, y: -0.63}
+      - {x: -0.105, y: -0.63}
+  m_UseDelaunayMesh: 0
 --- !u!114 &4604456490090694853
 MonoBehaviour:
   m_ObjectHideFlags: 0

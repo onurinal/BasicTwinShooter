@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using TowerDefender.Ally;
+using UnityEngine;
 
 namespace TowerDefender.Enemy
 {
@@ -6,10 +7,12 @@ namespace TowerDefender.Enemy
     {
         private EnemyProperties enemyProperties;
         private bool isMoving = false;
+        private int currentHealth;
 
         public void Initialize(EnemyProperties enemyProperties)
         {
             this.enemyProperties = enemyProperties;
+            currentHealth = this.enemyProperties.MaxHealth;
         }
 
         private void Update()
@@ -28,6 +31,15 @@ namespace TowerDefender.Enemy
         public void SetMovementActive()
         {
             isMoving = true;
+        }
+
+        public void TakeDamage(int damage)
+        {
+            currentHealth -= damage;
+            if (currentHealth <= 0)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }

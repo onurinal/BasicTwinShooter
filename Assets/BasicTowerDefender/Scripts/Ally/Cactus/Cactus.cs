@@ -9,7 +9,7 @@ namespace TowerDefender.Ally
 
         public void CreateProjectile()
         {
-            projectile = Instantiate(projectile, projectileSpawn.position, projectileSpawn.rotation);
+            var newProjectile = Instantiate(projectile, projectileSpawn.position, projectileSpawn.rotation);
         }
     }
 }

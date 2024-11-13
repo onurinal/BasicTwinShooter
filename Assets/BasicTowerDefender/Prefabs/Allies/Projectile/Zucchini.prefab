@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2450498924041893944}
   - component: {fileID: -3660233037073039327}
+  - component: {fileID: 492267065732755235}
   m_Layer: 0
   m_Name: Zucchini
   m_TagString: Untagged
@@ -46,6 +47,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileSpeed: 5
+  projectileDamage: 1
+--- !u!50 &492267065732755235
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2296107684723736004}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &3862305725565951858
 GameObject:
   m_ObjectHideFlags: 0
@@ -56,6 +85,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4585264009064722726}
   - component: {fileID: 8474093765829979631}
+  - component: {fileID: 4279897488616971804}
   m_Layer: 0
   m_Name: Zucchini Model
   m_TagString: Untagged
@@ -130,3 +160,65 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!60 &4279897488616971804
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3862305725565951858}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.56, y: 0.56}
+    newSize: {x: 0.56, y: 0.56}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.18923956, y: 0.2910671}
+      - {x: -0.28, y: 0.28}
+      - {x: -0.29291165, y: 0.18936698}
+      - {x: -0.28, y: 0.13}
+      - {x: -0.25, y: 0.099999994}
+      - {x: -0.0753687, y: 0.0013373997}
+      - {x: -0.01157538, y: -0.035614148}
+      - {x: 0.07008742, y: -0.13622019}
+      - {x: 0.17135696, y: -0.29106712}
+      - {x: 0.28, y: -0.28}
+      - {x: 0.2892226, y: -0.26622963}
+      - {x: 0.29430592, y: -0.16789046}
+      - {x: 0.27077743, y: -0.08553357}
+      - {x: 0.2507633, y: -0.038403247}
+      - {x: 0.2023322, y: 0.051554784}
+      - {x: -0.028445212, y: 0.2570884}
+      - {x: -0.08, y: 0.28}
+  m_UseDelaunayMesh: 0
