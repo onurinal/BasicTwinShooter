@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace TowerDefender.Level
+namespace TowerDefender.Manager
 {
     public class SpaceManager : MonoBehaviour
     {
