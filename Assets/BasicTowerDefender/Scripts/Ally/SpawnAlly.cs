@@ -4,7 +4,7 @@ namespace TowerDefender.Ally
 {
     public class SpawnAlly : MonoBehaviour
     {
-        [SerializeField] private Cactus cactusPrefab;
+        private Allies ally;
 
         // for snap to grid
         private const float ScaleFactor = 1.92f;
@@ -23,6 +23,11 @@ namespace TowerDefender.Ally
             CreateAlly();
         }
 
+        public void SelectedAlly(Allies allySelected)
+        {
+            ally = allySelected;
+        }
+
         private void CreateAlly()
         {
 #if UNITY_EDITOR
@@ -31,7 +36,7 @@ namespace TowerDefender.Ally
             var newPosition = SnapDefenderToGrid(currentMousePosition);
             if (Input.GetMouseButtonDown(0))
             {
-                var newCactus = Instantiate(cactusPrefab, newPosition, Quaternion.identity);
+                var newCactus = Instantiate(ally, newPosition, Quaternion.identity);
             }
 #else
             if (Input.touchCount > 0)
@@ -39,7 +44,7 @@ namespace TowerDefender.Ally
                 Touch touch = Input.GetTouch(0);
                 var touchPosition = mainCamera.ScreenToWorldPoint(touch.position);
                 touchPosition.z = 0f;
-                var newCactus = Instantiate(cactusPrefab, touchPosition, Quaternion.identity);
+                var newCactus = Instantiate(ally, touchPosition, Quaternion.identity);
             }
 #endif
         }
