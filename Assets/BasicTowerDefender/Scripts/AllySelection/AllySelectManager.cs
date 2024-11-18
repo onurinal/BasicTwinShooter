@@ -25,7 +25,7 @@ namespace TowerDefender.AllySelection
             }
 
             selection.PickedAlly();
-            spawnAlly.SelectedAlly(selection.AllyPrefab);
+            spawnAlly.SetSelectedAlly(selection.AllyPrefab);
         }
     }
 }

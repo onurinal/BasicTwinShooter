@@ -23,7 +23,7 @@ namespace TowerDefender.Ally
             CreateAlly();
         }
 
-        public void SelectedAlly(Allies allySelected)
+        public void SetSelectedAlly(Allies allySelected)
         {
             ally = allySelected;
         }
@@ -36,7 +36,10 @@ namespace TowerDefender.Ally
             var newPosition = SnapDefenderToGrid(currentMousePosition);
             if (Input.GetMouseButtonDown(0))
             {
-                var newCactus = Instantiate(ally, newPosition, Quaternion.identity);
+                if (ally != null)
+                {
+                    var newCactus = Instantiate(ally, newPosition, Quaternion.identity);
+                }
             }
 #else
             if (Input.touchCount > 0)
@@ -44,16 +47,17 @@ namespace TowerDefender.Ally
                 Touch touch = Input.GetTouch(0);
                 var touchPosition = mainCamera.ScreenToWorldPoint(touch.position);
                 touchPosition.z = 0f;
+                var newPosition = SnapDefenderToGrid(touchPosition);
                 var newCactus = Instantiate(ally, touchPosition, Quaternion.identity);
             }
 #endif
         }
 
-        private Vector3 SnapDefenderToGrid(Vector3 mousePosition)
+        private Vector3 SnapDefenderToGrid(Vector3 position)
         {
-            var newPosition = mousePosition;
-            newPosition.x = SnapPositionToGrid(mousePosition.x);
-            newPosition.y = SnapPositionToGrid(mousePosition.y);
+            var newPosition = position;
+            newPosition.x = SnapPositionToGrid(position.x);
+            newPosition.y = SnapPositionToGrid(position.y);
             return newPosition;
         }
 

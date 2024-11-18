@@ -10,9 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1443217567785435965}
   - component: {fileID: 7514063844543563686}
-  - component: {fileID: 5709499621501237462}
   - component: {fileID: 6703671084238326275}
-  - component: {fileID: 4604456490090694853}
   m_Layer: 0
   m_Name: Lizard Model
   m_TagString: Untagged
@@ -30,7 +28,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.6, y: 1.6, z: 1}
+  m_LocalScale: {x: 1.6, y: 1.6, z: 1.6}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2176276435532780664}
@@ -87,27 +85,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &5709499621501237462
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3044427994606106058}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: cc91169e227ae524cabeab3c2c1d7495, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!60 &6703671084238326275
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -177,19 +154,6 @@ PolygonCollider2D:
       - {x: -0.325, y: -0.63}
       - {x: -0.105, y: -0.63}
   m_UseDelaunayMesh: 0
---- !u!114 &4604456490090694853
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3044427994606106058}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9fcbf15d05dc44fe9198244c1b1acdda, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemy: {fileID: 397296718387877195}
 --- !u!1 &7878236077152264600
 GameObject:
   m_ObjectHideFlags: 0
@@ -200,6 +164,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2176276435532780664}
   - component: {fileID: 397296718387877195}
+  - component: {fileID: 6484447879859294136}
   m_Layer: 0
   m_Name: Lizard
   m_TagString: Untagged
@@ -235,3 +200,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bb24c1fc99b4b1fa8cddffe40c92ea4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &6484447879859294136
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7878236077152264600}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: cc91169e227ae524cabeab3c2c1d7495, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
