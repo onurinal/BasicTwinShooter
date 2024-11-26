@@ -1,31 +1,58 @@
 ﻿using UnityEngine;
 
-namespace TowerDefender.Ally
+namespace TowerDefender.Manager
 {
-    public class SpawnAlly : MonoBehaviour
+    public class SpawnAllyManager : MonoBehaviour
     {
+        private Camera mainCamera;
         private Allies ally;
+        private AllySelectManager allySelectManager;
+        private SpriteRenderer selectedAllySprite;
+        private bool isAllySelected;
+
 
         // for snap to grid
         private const float ScaleFactor = 1.92f;
         private const float HalfScaleFactor = ScaleFactor / 2.0f;
 
-
-        private Camera mainCamera;
-
         private void Start()
         {
-            mainCamera = Camera.main;
+            if (mainCamera == null)
+            {
+                mainCamera = Camera.main;
+            }
         }
 
         private void OnMouseDown()
         {
-            CreateAlly();
+            AttemptToCreateAlly();
         }
 
-        public void SetSelectedAlly(Allies allySelected)
+        public void SetSelectedAlly(Allies allySelected, SpriteRenderer selectedAllySprite, bool isAllySelected, AllySelectManager allySelectManager)
         {
             ally = allySelected;
+            this.selectedAllySprite = selectedAllySprite;
+            this.isAllySelected = isAllySelected;
+            this.allySelectManager = allySelectManager;
+        }
+
+        private void AttemptToCreateAlly()
+        {
+            var currentScore = UIManager.Instance.CurrentScore;
+
+            if (ally == null)
+            {
+                return;
+            }
+
+            if (currentScore >= ally.PointCost && isAllySelected)
+            {
+                CreateAlly();
+                Destroy(selectedAllySprite.gameObject);
+                isAllySelected = false;
+                CleanSelectedAfterCreation();
+                UIManager.Instance.SpendScore(ally.PointCost);
+            }
         }
 
         private void CreateAlly()
@@ -44,7 +71,7 @@ namespace TowerDefender.Ally
 #else
             if (Input.touchCount > 0)
             {
-                Touch touch = Input.GetTouch(0);
+                var touch = Input.GetTouch(0);
                 var touchPosition = mainCamera.ScreenToWorldPoint(touch.position);
                 touchPosition.z = 0f;
                 var newPosition = SnapDefenderToGrid(touchPosition);
@@ -85,6 +112,14 @@ namespace TowerDefender.Ally
             }
 
             return newPosition * Mathf.Sign(position);
+        }
+
+        private void CleanSelectedAfterCreation()
+        {
+            for (var i = 0; i < allySelectManager.Allies.Count; i++)
+            {
+                allySelectManager.Allies[i].UnpickedAlly();
+            }
         }
     }
 }

@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 2962964551363837313}
   - component: {fileID: 7204251939328161396}
   - component: {fileID: 5221018112869087419}
+  - component: {fileID: 1450111247489007603}
   m_Layer: 0
   m_Name: Cactus
   m_TagString: Untagged
@@ -78,6 +79,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78cd6e0fc84d4e73904f939144367f07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pointCost: 100
 --- !u!114 &5221018112869087419
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -92,6 +94,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileSpawn: {fileID: 859699679443723234}
   projectile: {fileID: 2296107684723736004, guid: 02bab9ec416c3da4291ebd0f759c6c83, type: 3}
+--- !u!95 &1450111247489007603
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4232310178529309050}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 20998c833c1e7fa46bbab23d635ae392, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &5010035485555263697
 GameObject:
   m_ObjectHideFlags: 0

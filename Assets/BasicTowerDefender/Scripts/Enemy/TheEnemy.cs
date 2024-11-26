@@ -1,4 +1,4 @@
-﻿using TowerDefender.Ally;
+﻿using TowerDefender.Manager;
 using UnityEngine;
 
 namespace TowerDefender.Enemy

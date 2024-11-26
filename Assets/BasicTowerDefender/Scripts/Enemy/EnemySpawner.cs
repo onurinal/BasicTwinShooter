@@ -53,6 +53,7 @@ namespace TowerDefender.Enemy
                 yield return new WaitForSeconds(Random.Range(1f, 6f));
                 var enemy = Instantiate(enemyProperties[0].EnemyPrefab, enemySpawnPosition[enemySpawnPositionIndex].position, Quaternion.identity);
                 enemy.Initialize(enemyProperties[0]);
+                enemy.transform.parent = enemySpawnPosition[enemySpawnPositionIndex];
             }
         }
 

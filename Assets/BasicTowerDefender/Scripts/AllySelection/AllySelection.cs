@@ -1,16 +1,19 @@
-using TowerDefender.Ally;
 using UnityEngine;
 
-namespace TowerDefender.AllySelection
+namespace TowerDefender.Manager
 {
     public class AllySelection : MonoBehaviour
     {
-        [SerializeField] private SpriteRenderer spriteRenderer;
+        [SerializeField] private SpriteRenderer allySprite;
         private ISelectionController iSelectionController;
-
         [SerializeField] private Allies allyPrefab;
 
+        [SerializeField] private SpriteRenderer moveableSprite;
+        private SpriteRenderer moveableSpriteInstance;
+        private bool isAllySelected = false;
+
         public Allies AllyPrefab => allyPrefab;
+        public bool IsAllySelected => isAllySelected;
 
         public void Initialize(ISelectionController iSelectionController)
         {
@@ -24,12 +27,22 @@ namespace TowerDefender.AllySelection
 
         public void UnpickedAlly()
         {
-            spriteRenderer.color = new Color32(109, 109, 109, 255);
+            if (moveableSpriteInstance != null)
+            {
+                Destroy(moveableSpriteInstance.gameObject);
+            }
+
+
+            allySprite.color = new Color32(109, 109, 109, 255);
+            isAllySelected = false;
         }
 
-        public void PickedAlly()
+        public SpriteRenderer PickedAlly()
         {
-            spriteRenderer.color = Color.white;
+            allySprite.color = Color.white;
+            isAllySelected = true;
+            moveableSpriteInstance = Instantiate(moveableSprite, transform.position, Quaternion.identity);
+            return moveableSpriteInstance;
         }
     }
 }

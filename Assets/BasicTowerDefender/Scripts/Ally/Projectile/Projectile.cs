@@ -1,7 +1,7 @@
 ﻿using TowerDefender.Enemy;
 using UnityEngine;
 
-namespace TowerDefender.Ally
+namespace TowerDefender.Manager
 {
     public class Projectile : MonoBehaviour
     {

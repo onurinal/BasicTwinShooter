@@ -1,6 +1,4 @@
-﻿using TowerDefender.Ally;
-
-namespace TowerDefender.AllySelection
+﻿namespace TowerDefender.Manager
 {
     public interface ISelectionController
     {

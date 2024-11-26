@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace TowerDefender.Ally
+namespace TowerDefender.Manager
 {
     public class Cactus : MonoBehaviour
     {
