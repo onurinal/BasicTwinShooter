@@ -10,7 +10,7 @@ namespace TowerDefender.Manager
 
         public static UIManager Instance;
 
-        public int CurrentScore { get; private set; } = 0;
+        public int CurrentScore { get; private set; } = 500;
 
         private void Awake()
         {

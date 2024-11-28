@@ -31,7 +31,6 @@ namespace TowerDefender.Enemy
 
         private void Start()
         {
-            // just testing
             StartSpawnEnemy();
         }
 

@@ -1,9 +1,11 @@
-﻿using UnityEngine;
+﻿using TowerDefender.Enemy;
+using UnityEngine;
 
 namespace TowerDefender.Manager
 {
     public class SpawnAllyManager : MonoBehaviour
     {
+        [SerializeField] private Transform enemySpawner;
         private Camera mainCamera;
         private Allies ally;
         private AllySelectManager allySelectManager;
@@ -45,7 +47,7 @@ namespace TowerDefender.Manager
                 return;
             }
 
-            if (currentScore >= ally.PointCost && isAllySelected)
+            if (currentScore >= ally.PointCost && isAllySelected && !CheckOverlap())
             {
                 CreateAlly();
                 Destroy(selectedAllySprite.gameObject);
@@ -65,7 +67,12 @@ namespace TowerDefender.Manager
             {
                 if (ally != null)
                 {
-                    var newCactus = Instantiate(ally, newPosition, Quaternion.identity);
+                    var theAlly = Instantiate(ally, newPosition, Quaternion.identity);
+                    var defender = theAlly.gameObject.GetComponent<Defender>();
+                    if (defender != null)
+                    {
+                        defender.Initialize(enemySpawner);
+                    }
                 }
             }
 #else
@@ -120,6 +127,30 @@ namespace TowerDefender.Manager
             {
                 allySelectManager.Allies[i].UnpickedAlly();
             }
+        }
+
+        private bool CheckOverlap()
+        {
+#if UNITY_EDITOR
+            var currentMousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+            currentMousePosition.z = 0f;
+            var hit = Physics2D.Raycast(currentMousePosition, Vector2.zero);
+#else
+            if (Input.touchCount > 0)
+            {
+                var touch = Input.GetTouch(0);
+                var touchPosition = mainCamera.ScreenToWorldPoint(touch.position);
+                touchPosition.z = 0f;
+                var hit = Physics2D.Raycast(touchPosition, Vector2.zero);
+            }
+#endif
+            var allies = hit.collider.GetComponentInParent<Allies>();
+            if (allies != null)
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }
