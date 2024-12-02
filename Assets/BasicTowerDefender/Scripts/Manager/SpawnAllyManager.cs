@@ -134,7 +134,8 @@ namespace TowerDefender.Manager
 #if UNITY_EDITOR
             var currentMousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
             currentMousePosition.z = 0f;
-            var hit = Physics2D.Raycast(currentMousePosition, Vector2.zero);
+            var newPosition = SnapDefenderToGrid(currentMousePosition);
+            var hit = Physics2D.Raycast(newPosition, Vector2.zero);
 #else
             if (Input.touchCount > 0)
             {

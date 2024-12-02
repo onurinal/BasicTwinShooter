@@ -94,7 +94,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileSpawn: {fileID: 859699679443723234}
   projectile: {fileID: 2296107684723736004, guid: 02bab9ec416c3da4291ebd0f759c6c83, type: 3}
-  enemySpawner: {fileID: 5932885635235938063, guid: bc5d6b8d3dbdce4469b3763ac8d6af0f, type: 3}
   animator: {fileID: 1450111247489007603}
 --- !u!95 &1450111247489007603
 Animator:
@@ -234,7 +233,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0035984814, y: 0.03547132}
+  m_Offset: {x: 0.0041734576, y: 0.027699351}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -245,5 +244,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.4213903, y: 1.401885}
+  m_Size: {x: 1.447297, y: 1.4692421}
   m_EdgeRadius: 0
