@@ -10,7 +10,6 @@ namespace TowerDefender.Manager
         private Allies ally;
         private AllySelectManager allySelectManager;
         private SpriteRenderer selectedAllySprite;
-        private bool isAllySelected;
 
 
         // for snap to grid
@@ -30,11 +29,10 @@ namespace TowerDefender.Manager
             AttemptToCreateAlly();
         }
 
-        public void SetSelectedAlly(Allies allySelected, SpriteRenderer selectedAllySprite, bool isAllySelected, AllySelectManager allySelectManager)
+        public void SetSelectedAlly(Allies allySelected, SpriteRenderer selectedAllySprite, AllySelectManager allySelectManager)
         {
             ally = allySelected;
             this.selectedAllySprite = selectedAllySprite;
-            this.isAllySelected = isAllySelected;
             this.allySelectManager = allySelectManager;
         }
 
@@ -47,11 +45,11 @@ namespace TowerDefender.Manager
                 return;
             }
 
-            if (currentScore >= ally.PointCost && isAllySelected && !CheckOverlap())
+            if (currentScore >= ally.PointCost && allySelectManager.isAllyReadyToCreate && !CheckOverlap())
             {
                 CreateAlly();
                 Destroy(selectedAllySprite.gameObject);
-                isAllySelected = false;
+                allySelectManager.isAllyReadyToCreate = false;
                 CleanSelectedAfterCreation();
                 UIManager.Instance.SpendScore(ally.PointCost);
             }
@@ -82,7 +80,15 @@ namespace TowerDefender.Manager
                 var touchPosition = mainCamera.ScreenToWorldPoint(touch.position);
                 touchPosition.z = 0f;
                 var newPosition = SnapDefenderToGrid(touchPosition);
-                var newCactus = Instantiate(ally, touchPosition, Quaternion.identity);
+                if (ally != null)
+                {
+                    var theAlly = Instantiate(ally, newPosition, Quaternion.identity);
+                    var defender = theAlly.gameObject.GetComponent<Defender>();
+                    if (defender != null)
+                    {
+                        defender.Initialize(enemySpawner);
+                    }
+                }
             }
 #endif
         }
@@ -97,8 +103,8 @@ namespace TowerDefender.Manager
 
         /* This method is rounding the numbers to center of square
          First get the mod of the number with scaleFactor and if it is smaller than halfScaleFactor
-         then we can understand that this number is above the center of the square, otherwise if
-         the number is bigger than halfScaleFactor then this position is below the center of square
+         then we can understand that this position is above the center of the square, otherwise if
+         the remain is bigger than halfScaleFactor then this position is below the center of square
          It works the same as Mathf.RoundToInt()
          */
         private float SnapPositionToGrid(float position)

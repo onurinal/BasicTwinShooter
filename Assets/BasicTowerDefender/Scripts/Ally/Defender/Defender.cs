@@ -13,7 +13,7 @@ namespace TowerDefender.Manager
         private Transform myLaneSpawner;
 
         [SerializeField] private Animator animator;
-        private int isAttackingHash;
+        private readonly int isAttackingHash = Animator.StringToHash("isAttacking");
 
         public void Initialize(Transform enemySpawner)
         {
@@ -23,7 +23,6 @@ namespace TowerDefender.Manager
         private void Start()
         {
             SetEnemySpawnList();
-            isAttackingHash = Animator.StringToHash("isAttacking");
             SetLaneSpawner();
         }
 

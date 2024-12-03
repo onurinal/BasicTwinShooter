@@ -8,10 +8,11 @@ namespace TowerDefender.Enemy
         [SerializeField] private TheEnemy enemyPrefab;
         [SerializeField] [Range(0f, 5f)] private float moveSpeed;
         [SerializeField] private int maxHealth;
+        [SerializeField] private int damage;
 
         public TheEnemy EnemyPrefab => enemyPrefab;
         public float MoveSpeed => moveSpeed;
-
         public int MaxHealth => maxHealth;
+        public int Damage => damage;
     }
 }

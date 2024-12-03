@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 namespace TowerDefender.Manager
@@ -10,6 +9,10 @@ namespace TowerDefender.Manager
         [SerializeField] private SpawnAllyManager spawnAllyManager;
 
         private SpriteRenderer moveableSelectedSprite;
+
+        public bool isAllyReadyToCreate = false;
+
+
         private Camera mainCamera;
 
         public List<AllySelection> Allies => allies;
@@ -34,18 +37,26 @@ namespace TowerDefender.Manager
 
         public void SelectedAlly(AllySelection selection)
         {
+            if (selection.IsAllySelected)
+            {
+                selection.UnpickedAlly();
+                isAllyReadyToCreate = false;
+                return;
+            }
+
             for (var i = 0; i < allies.Count; i++)
             {
                 allies[i].UnpickedAlly();
             }
 
             moveableSelectedSprite = selection.PickedAlly();
-            spawnAllyManager.SetSelectedAlly(selection.AllyPrefab, moveableSelectedSprite, selection.IsAllySelected, this);
+            spawnAllyManager.SetSelectedAlly(selection.AllyPrefab, moveableSelectedSprite, this);
+            isAllyReadyToCreate = true;
         }
 
         private void DragSelectedAlly()
         {
-            if (moveableSelectedSprite == null)
+            if (!moveableSelectedSprite)
             {
                 return;
             }

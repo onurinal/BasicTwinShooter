@@ -6,28 +6,11 @@ namespace TowerDefender.Enemy
 {
     public class EnemySpawner : MonoBehaviour
     {
-        // just testing
-        [SerializeField] private List<Transform> enemySpawnPosition;
-        [SerializeField] private List<EnemyProperties> enemyProperties;
+        [SerializeField] private List<EnemyProperties> enemies;
 
         [SerializeField] private float minSpawnDelay, maxSpawnDelay;
         private IEnumerator spawnEnemiesCoroutine;
         private bool isSpawning = false;
-
-
-        public static EnemySpawner Instance;
-
-        private void Awake()
-        {
-            if (Instance != null && Instance != this)
-            {
-                Destroy(this.gameObject);
-            }
-            else
-            {
-                Instance = this;
-            }
-        }
 
         private void Start()
         {
@@ -36,23 +19,22 @@ namespace TowerDefender.Enemy
 
         private IEnumerator SpawnEnemy()
         {
-            for (var i = 0; i < enemySpawnPosition.Count; i++)
-            {
-                StartCoroutine(SpawnEnemyAtPosition(i));
-            }
+            StartCoroutine(SpawnEnemyAtPosition());
+
 
             yield return null;
         }
 
-        private IEnumerator SpawnEnemyAtPosition(int enemySpawnPositionIndex)
+        private IEnumerator SpawnEnemyAtPosition()
         {
             isSpawning = true;
             while (isSpawning)
             {
-                yield return new WaitForSeconds(Random.Range(1f, 6f));
-                var enemy = Instantiate(enemyProperties[0].EnemyPrefab, enemySpawnPosition[enemySpawnPositionIndex].position, Quaternion.identity);
-                enemy.Initialize(enemyProperties[0]);
-                enemy.transform.parent = enemySpawnPosition[enemySpawnPositionIndex];
+                yield return new WaitForSeconds(Random.Range(minSpawnDelay, maxSpawnDelay));
+                var randomEnemyIndex = Random.Range(0, enemies.Count);
+                var enemy = Instantiate(enemies[randomEnemyIndex].EnemyPrefab, transform.position, Quaternion.identity);
+                enemy.Initialize(enemies[randomEnemyIndex]);
+                enemy.transform.parent = transform;
             }
         }
 

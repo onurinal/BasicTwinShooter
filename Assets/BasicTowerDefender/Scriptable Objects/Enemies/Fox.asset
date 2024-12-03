@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 823234102e33417fbd4e1071097c265c, type: 3}
-  m_Name: Lizard
+  m_Name: Fox
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 397296718387877195, guid: 3aa70b73f0527b642bcdf47238780e27, type: 3}
-  moveSpeed: 1
-  maxHealth: 1
-  damage: 25
+  enemyPrefab: {fileID: 5622130099774082232, guid: ecab763ece74be74b9464e1dde4e8714, type: 3}
+  moveSpeed: 3
+  maxHealth: 2
+  damage: 50
