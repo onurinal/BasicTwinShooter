@@ -15,4 +15,5 @@ MonoBehaviour:
   enemyPrefab: {fileID: 5622130099774082232, guid: ecab763ece74be74b9464e1dde4e8714, type: 3}
   moveSpeed: 3
   maxHealth: 2
-  damage: 50
+  damageToAlly: 25
+  damageToPlayerHealth: 25

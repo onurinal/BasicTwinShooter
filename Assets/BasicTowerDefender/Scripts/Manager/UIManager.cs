@@ -7,7 +7,10 @@ namespace TowerDefender.Manager
     public class UIManager : MonoBehaviour
     {
         [SerializeField] private TextMeshProUGUI scoreText;
+        [SerializeField] private TextMeshProUGUI playerLifeText;
+        [SerializeField] private TextMeshProUGUI playerHealthText;
 
+        private GameManager gameManager;
         public static UIManager Instance;
 
         public int CurrentScore { get; private set; } = 500;
@@ -26,7 +29,10 @@ namespace TowerDefender.Manager
 
         private void Start()
         {
+            gameManager = GameManager.Instance;
             scoreText.text = CurrentScore.ToString();
+            playerLifeText.text = gameManager.CurrentPlayerLife.ToString();
+            playerHealthText.text = gameManager.CurrentHealth.ToString();
         }
 
         private void UpdateScore()
@@ -44,6 +50,12 @@ namespace TowerDefender.Manager
         {
             CurrentScore -= scoreToSpend;
             UpdateScore();
+        }
+
+        public void UpdatePlayerLifeAndHealth()
+        {
+            playerLifeText.text = gameManager.CurrentPlayerLife.ToString();
+            playerHealthText.text = gameManager.CurrentHealth.ToString();
         }
     }
 }

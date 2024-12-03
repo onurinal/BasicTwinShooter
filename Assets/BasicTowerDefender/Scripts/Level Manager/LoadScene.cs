@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,6 +8,20 @@ namespace TowerDefender.Level
     public class LoadScene : MonoBehaviour
     {
         private int currentScene;
+
+        public static LoadScene Instance;
+
+        private void Awake()
+        {
+            if (Instance != null)
+            {
+                Destroy(gameObject);
+            }
+            else
+            {
+                Instance = this;
+            }
+        }
 
         private void Start()
         {
@@ -20,6 +35,16 @@ namespace TowerDefender.Level
         public void LoadNextScene()
         {
             SceneManager.LoadScene(currentScene + 1);
+        }
+
+        public void LoadMainMenu()
+        {
+            SceneManager.LoadScene("Main Menu");
+        }
+
+        public void LoadGameOverScene()
+        {
+            SceneManager.LoadScene("Game Over");
         }
 
         public void QuitGame()

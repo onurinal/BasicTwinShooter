@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pointCost: 100
-  health: 50
+  health: 75
 --- !u!114 &5783772204330411566
 MonoBehaviour:
   m_ObjectHideFlags: 0

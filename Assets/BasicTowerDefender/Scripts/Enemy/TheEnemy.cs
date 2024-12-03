@@ -59,14 +59,19 @@ namespace TowerDefender.Enemy
             animator.SetBool(isAttackingHash, true);
         }
 
-        public void DealDamage()
+        public void DealDamageToAlly()
         {
             if (!currentTarget)
             {
                 return;
             }
 
-            currentTarget.TakeDamage(enemyProperties.Damage);
+            currentTarget.TakeDamage(enemyProperties.DamageToAlly);
+        }
+
+        public int GetDamageToPlayer()
+        {
+            return enemyProperties.DamageToPlayerHealth;
         }
 
         public void TakeDamage(int damage)
