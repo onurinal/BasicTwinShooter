@@ -1,5 +1,5 @@
-﻿using TowerDefender.Enemy;
-using TowerDefender.Manager;
+﻿using BasicTowerDefender.Enemy;
+using BasicTowerDefender.Manager;
 using UnityEngine;
 
 public class GameOver : MonoBehaviour

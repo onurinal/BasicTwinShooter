@@ -3,13 +3,13 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace TowerDefender.Level
+namespace BasicTowerDefender.Level
 {
-    public class LoadScene : MonoBehaviour
+    public class LevelLoader : MonoBehaviour
     {
         private int currentScene;
 
-        public static LoadScene Instance;
+        public static LevelLoader Instance;
 
         private void Awake()
         {
@@ -40,11 +40,13 @@ namespace TowerDefender.Level
         public void LoadMainMenu()
         {
             SceneManager.LoadScene("Main Menu");
+            Time.timeScale = 1;
         }
 
-        public void LoadGameOverScene()
+        public void LoadSameScene()
         {
-            SceneManager.LoadScene("Game Over");
+            SceneManager.LoadScene(currentScene);
+            Time.timeScale = 1;
         }
 
         public void QuitGame()

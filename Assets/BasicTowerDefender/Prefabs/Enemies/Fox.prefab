@@ -223,6 +223,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bb24c1fc99b4b1fa8cddffe40c92ea4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelManager: {fileID: 3792423565497551509, guid: fbb0d07394d415e48a981a26940b728a, type: 3}
   animator: {fileID: 3476969971943063057}
 --- !u!95 &3476969971943063057
 Animator:

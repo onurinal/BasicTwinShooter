@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace TowerDefender.Manager
+namespace BasicTowerDefender.Manager
 {
     public class AllySelectManager : MonoBehaviour, ISelectionController
     {
@@ -10,8 +10,7 @@ namespace TowerDefender.Manager
 
         private SpriteRenderer moveableSelectedSprite;
 
-        public bool isAllyReadyToCreate = false;
-
+        public bool IsAllyReadyToCreate { get; set; }
 
         private Camera mainCamera;
 
@@ -40,7 +39,7 @@ namespace TowerDefender.Manager
             if (selection.IsAllySelected)
             {
                 selection.UnpickedAlly();
-                isAllyReadyToCreate = false;
+                IsAllyReadyToCreate = false;
                 return;
             }
 
@@ -51,7 +50,7 @@ namespace TowerDefender.Manager
 
             moveableSelectedSprite = selection.PickedAlly();
             spawnAllyManager.SetSelectedAlly(selection.AllyPrefab, moveableSelectedSprite, this);
-            isAllyReadyToCreate = true;
+            IsAllyReadyToCreate = true;
         }
 
         private void DragSelectedAlly()

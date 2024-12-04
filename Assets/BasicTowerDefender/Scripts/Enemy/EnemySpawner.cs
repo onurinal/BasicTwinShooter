@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using BasicTowerDefender.Manager;
 using UnityEngine;
 
-namespace TowerDefender.Enemy
+namespace BasicTowerDefender.Enemy
 {
     public class EnemySpawner : MonoBehaviour
     {
@@ -12,16 +13,18 @@ namespace TowerDefender.Enemy
         private IEnumerator spawnEnemiesCoroutine;
         private bool isSpawning = false;
 
-        private void Start()
+
+        private LevelManager levelManager;
+
+        public void Initialize(LevelManager levelManager)
         {
+            this.levelManager = levelManager;
             StartSpawnEnemy();
         }
 
         private IEnumerator SpawnEnemy()
         {
             StartCoroutine(SpawnEnemyAtPosition());
-
-
             yield return null;
         }
 
@@ -33,8 +36,9 @@ namespace TowerDefender.Enemy
                 yield return new WaitForSeconds(Random.Range(minSpawnDelay, maxSpawnDelay));
                 var randomEnemyIndex = Random.Range(0, enemies.Count);
                 var enemy = Instantiate(enemies[randomEnemyIndex].EnemyPrefab, transform.position, Quaternion.identity);
-                enemy.Initialize(enemies[randomEnemyIndex]);
+                enemy.Initialize(enemies[randomEnemyIndex], levelManager);
                 enemy.transform.parent = transform;
+                levelManager.CountEnemies();
             }
         }
 
@@ -46,7 +50,7 @@ namespace TowerDefender.Enemy
             StartCoroutine(spawnEnemiesCoroutine);
         }
 
-        private void StopSpawnEnemy()
+        public void StopSpawnEnemy()
         {
             if (spawnEnemiesCoroutine != null)
             {

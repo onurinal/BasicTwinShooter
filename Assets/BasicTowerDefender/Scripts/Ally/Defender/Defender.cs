@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace TowerDefender.Manager
+namespace BasicTowerDefender.Ally.Defender
 {
     public class Defender : MonoBehaviour
     {

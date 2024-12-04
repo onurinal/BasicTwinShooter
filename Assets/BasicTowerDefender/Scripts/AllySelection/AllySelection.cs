@@ -1,6 +1,7 @@
+using BasicTowerDefender.Ally;
 using UnityEngine;
 
-namespace TowerDefender.Manager
+namespace BasicTowerDefender.Manager
 {
     public class AllySelection : MonoBehaviour
     {

@@ -1,11 +1,12 @@
-﻿using System;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 
-namespace TowerDefender.Manager
+namespace BasicTowerDefender.Manager
 {
     public class UIManager : MonoBehaviour
     {
+        [SerializeField] private GameObject winLevelUI;
+        [SerializeField] private GameObject loseLevelUI;
         [SerializeField] private TextMeshProUGUI scoreText;
         [SerializeField] private TextMeshProUGUI playerLifeText;
         [SerializeField] private TextMeshProUGUI playerHealthText;
@@ -14,6 +15,8 @@ namespace TowerDefender.Manager
         public static UIManager Instance;
 
         public int CurrentScore { get; private set; } = 500;
+        public GameObject WinLevelUI => winLevelUI;
+        public GameObject LoseLevelUI => loseLevelUI;
 
         private void Awake()
         {
@@ -27,12 +30,11 @@ namespace TowerDefender.Manager
             }
         }
 
-        private void Start()
+        public void Initialize(GameManager gameManager)
         {
-            gameManager = GameManager.Instance;
-            scoreText.text = CurrentScore.ToString();
-            playerLifeText.text = gameManager.CurrentPlayerLife.ToString();
-            playerHealthText.text = gameManager.CurrentHealth.ToString();
+            this.gameManager = gameManager;
+            UpdateScore();
+            UpdatePlayerLifeAndHealth();
         }
 
         private void UpdateScore()

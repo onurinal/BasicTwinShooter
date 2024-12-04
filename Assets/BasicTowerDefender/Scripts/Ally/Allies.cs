@@ -1,7 +1,7 @@
-﻿using System;
+﻿using BasicTowerDefender.Manager;
 using UnityEngine;
 
-namespace TowerDefender.Manager
+namespace BasicTowerDefender.Ally
 {
     public class Allies : MonoBehaviour
     {

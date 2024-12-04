@@ -1,7 +1,8 @@
-﻿using TowerDefender.Enemy;
+﻿using BasicTowerDefender.Ally;
+using BasicTowerDefender.Ally.Defender;
 using UnityEngine;
 
-namespace TowerDefender.Manager
+namespace BasicTowerDefender.Manager
 {
     public class SpawnAllyManager : MonoBehaviour
     {
@@ -45,11 +46,11 @@ namespace TowerDefender.Manager
                 return;
             }
 
-            if (currentScore >= ally.PointCost && allySelectManager.isAllyReadyToCreate && !CheckOverlap())
+            if (currentScore >= ally.PointCost && allySelectManager.IsAllyReadyToCreate && !CheckOverlap())
             {
                 CreateAlly();
                 Destroy(selectedAllySprite.gameObject);
-                allySelectManager.isAllyReadyToCreate = false;
+                allySelectManager.IsAllyReadyToCreate = false;
                 CleanSelectedAfterCreation();
                 UIManager.Instance.SpendScore(ally.PointCost);
             }

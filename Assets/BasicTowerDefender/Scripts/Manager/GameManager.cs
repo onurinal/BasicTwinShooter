@@ -1,10 +1,10 @@
-﻿using TowerDefender.Level;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace TowerDefender.Manager
+namespace BasicTowerDefender.Manager
 {
     public class GameManager : MonoBehaviour
     {
+        [SerializeField] private LevelManager levelManager;
         [SerializeField] private int maxPlayerLife = 3;
         [SerializeField] private int maxHealth = 100;
 
@@ -30,6 +30,12 @@ namespace TowerDefender.Manager
 
         private void Start()
         {
+            ResetGame();
+            UIManager.Instance.Initialize(this);
+        }
+
+        private void ResetGame()
+        {
             currentPlayerLife = maxPlayerLife;
             currentHealth = maxHealth;
         }
@@ -41,7 +47,7 @@ namespace TowerDefender.Manager
             if (currentPlayerLife <= 0)
             {
                 Debug.Log("Game Over");
-                LoadScene.Instance.LoadGameOverScene();
+                levelManager.LevelLost();
             }
 
             currentHealth = maxHealth;

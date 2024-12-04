@@ -14,7 +14,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/BasicTowerDefender/Scenes/Level 1.unity
     guid: d77928d4b7d016a4d80f2dd0ad4955cc
-  - enabled: 1
-    path: Assets/BasicTowerDefender/Scenes/Game Over.unity
-    guid: 8422ba96f76f250429c9bb436c6f27ed
   m_configObjects: {}

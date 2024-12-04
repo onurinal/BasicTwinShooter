@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace TowerDefender.Enemy
+namespace BasicTowerDefender.Enemy
 {
     [CreateAssetMenu(fileName = "Enemy 1", menuName = "TowerDefender/Enemy/Create New Enemy Properties")]
     public class EnemyProperties : ScriptableObject

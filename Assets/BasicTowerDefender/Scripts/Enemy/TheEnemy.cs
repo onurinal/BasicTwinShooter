@@ -1,8 +1,8 @@
-﻿using System;
-using TowerDefender.Manager;
+﻿using BasicTowerDefender.Ally;
+using BasicTowerDefender.Manager;
 using UnityEngine;
 
-namespace TowerDefender.Enemy
+namespace BasicTowerDefender.Enemy
 {
     public class TheEnemy : MonoBehaviour
     {
@@ -12,12 +12,15 @@ namespace TowerDefender.Enemy
         private int currentHealth;
         private readonly int isAttackingHash = Animator.StringToHash("isAttacking");
         private Allies currentTarget;
+        private bool isAlive = true;
+        private LevelManager levelManager;
 
 
-        public void Initialize(EnemyProperties enemyProperties)
+        public void Initialize(EnemyProperties enemyProperties, LevelManager levelManager)
         {
             this.enemyProperties = enemyProperties;
             currentHealth = this.enemyProperties.MaxHealth;
+            this.levelManager = levelManager;
         }
 
         private void Update()
@@ -28,6 +31,15 @@ namespace TowerDefender.Enemy
             }
 
             UpdateAttackAnimation();
+        }
+
+        private void OnDestroy()
+        {
+            if (isAlive)
+            {
+                levelManager.KilledEnemies();
+                isAlive = false;
+            }
         }
 
         private void Move()

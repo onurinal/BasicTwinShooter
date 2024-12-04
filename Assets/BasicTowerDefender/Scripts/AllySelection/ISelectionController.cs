@@ -1,4 +1,4 @@
-﻿namespace TowerDefender.Manager
+﻿namespace BasicTowerDefender.Manager
 {
     public interface ISelectionController
     {

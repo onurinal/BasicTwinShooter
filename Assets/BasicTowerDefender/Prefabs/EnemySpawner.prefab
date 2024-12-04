@@ -45,10 +45,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemies:
-  - {fileID: 11400000, guid: 1f554ef577f85154fad543300dc188de, type: 2}
   - {fileID: 11400000, guid: f1d632f15af778b48bac2217ce4e0d75, type: 2}
-  minSpawnDelay: 3
-  maxSpawnDelay: 10
+  - {fileID: 11400000, guid: 1f554ef577f85154fad543300dc188de, type: 2}
+  minSpawnDelay: 1
+  maxSpawnDelay: 6
 --- !u!1 &4691017549021550370
 GameObject:
   m_ObjectHideFlags: 0
@@ -96,8 +96,8 @@ MonoBehaviour:
   enemies:
   - {fileID: 11400000, guid: 1f554ef577f85154fad543300dc188de, type: 2}
   - {fileID: 11400000, guid: f1d632f15af778b48bac2217ce4e0d75, type: 2}
-  minSpawnDelay: 3
-  maxSpawnDelay: 10
+  minSpawnDelay: 1
+  maxSpawnDelay: 6
 --- !u!1 &4986330489706821511
 GameObject:
   m_ObjectHideFlags: 0
@@ -143,10 +143,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemies:
-  - {fileID: 11400000, guid: 1f554ef577f85154fad543300dc188de, type: 2}
   - {fileID: 11400000, guid: f1d632f15af778b48bac2217ce4e0d75, type: 2}
-  minSpawnDelay: 3
-  maxSpawnDelay: 10
+  - {fileID: 11400000, guid: 1f554ef577f85154fad543300dc188de, type: 2}
+  minSpawnDelay: 1
+  maxSpawnDelay: 6
 --- !u!1 &5384028840246264952
 GameObject:
   m_ObjectHideFlags: 0
@@ -230,8 +230,8 @@ MonoBehaviour:
   enemies:
   - {fileID: 11400000, guid: 1f554ef577f85154fad543300dc188de, type: 2}
   - {fileID: 11400000, guid: f1d632f15af778b48bac2217ce4e0d75, type: 2}
-  minSpawnDelay: 3
-  maxSpawnDelay: 10
+  minSpawnDelay: 1
+  maxSpawnDelay: 6
 --- !u!1 &7777940622026765586
 GameObject:
   m_ObjectHideFlags: 0
@@ -277,7 +277,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemies:
-  - {fileID: 11400000, guid: 1f554ef577f85154fad543300dc188de, type: 2}
   - {fileID: 11400000, guid: f1d632f15af778b48bac2217ce4e0d75, type: 2}
-  minSpawnDelay: 3
-  maxSpawnDelay: 10
+  - {fileID: 11400000, guid: 1f554ef577f85154fad543300dc188de, type: 2}
+  minSpawnDelay: 1
+  maxSpawnDelay: 6
