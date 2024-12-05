@@ -44,12 +44,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec8806a7109e40c0833bd81d20b019ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelTime: 5
-  levelTimeManager: {fileID: 0}
+  uiTimeManager: {fileID: 0}
   spawners:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  numberOfEnemies: 0
+  waitWinLosePanel: 3
+  levelTime: 5
+  point: 1000

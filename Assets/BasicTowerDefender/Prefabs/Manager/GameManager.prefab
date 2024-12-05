@@ -44,6 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8eb92d0668a48da95bfb42c7731b9bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelManager: {fileID: 3792423565497551509, guid: fbb0d07394d415e48a981a26940b728a, type: 3}
+  levelManager: {fileID: 0}
   maxPlayerLife: 1
-  maxHealth: 5
+  maxHealth: 100

@@ -1,5 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using BasicTowerDefender.Enemy;
+using BasicTowerDefender.Level;
 using UnityEngine;
 
 namespace BasicTowerDefender.Manager
@@ -8,15 +11,24 @@ namespace BasicTowerDefender.Manager
     {
         [SerializeField] private UITimeManager uiTimeManager;
         [SerializeField] private List<EnemySpawner> spawners;
+        [SerializeField] private float waitWinLosePanel;
         private int numberOfEnemies;
 
         [Tooltip("Level time in seconds")] [SerializeField]
         private float levelTime;
 
+        [SerializeField] private int point;
+
+        private IEnumerator winCoroutine;
+        private IEnumerator loseCoroutine;
+
+
         private float currentTime;
         private bool isLevelTimeOver;
+        public int CurrentPoint { get; set; }
+        private bool isLevelActive;
 
-        private void Start()
+        public void Initialize()
         {
             InitializeSpawners();
             SetupNewLevel();
@@ -43,8 +55,10 @@ namespace BasicTowerDefender.Manager
 
         private void SetupNewLevel()
         {
+            isLevelActive = true;
             uiTimeManager.Initialize(levelTime);
             numberOfEnemies = 0;
+            CurrentPoint = point;
         }
 
         private void InitializeSpawners()
@@ -73,24 +87,67 @@ namespace BasicTowerDefender.Manager
             numberOfEnemies--;
             if (numberOfEnemies <= 0 && isLevelTimeOver)
             {
-                LevelWon();
+                StartLevelWinPanel();
             }
         }
 
-        public void LevelLost()
+        private IEnumerator LevelLosePanel()
         {
-            if (UIManager.Instance.LoseLevelUI != null)
+            isLevelActive = false;
+            UIManager.Instance.LoseLevelUI.gameObject.SetActive(true);
+            Time.timeScale = 0;
+            yield return new WaitForSecondsRealtime(waitWinLosePanel);
+        }
+
+        private IEnumerator LevelWinPanel()
+        {
+            isLevelActive = false;
+            UIManager.Instance.WinLevelUI.gameObject.SetActive(true);
+            AudioManager.Instance.PlayLevelCompleteSound();
+            Time.timeScale = 0;
+            yield return new WaitForSecondsRealtime(waitWinLosePanel);
+            LevelLoader.Instance.LoadNextScene();
+        }
+
+        private void StartLevelWinPanel()
+        {
+            if (!isLevelActive)
             {
-                UIManager.Instance.LoseLevelUI.gameObject.SetActive(true);
-                Time.timeScale = 0;
+                return;
+            }
+
+            StopLevelWinPanel();
+            winCoroutine = LevelWinPanel();
+            StartCoroutine(winCoroutine);
+        }
+
+        private void StopLevelWinPanel()
+        {
+            if (winCoroutine != null)
+            {
+                StopCoroutine(winCoroutine);
+                winCoroutine = null;
             }
         }
 
-        private void LevelWon()
+        public void StartLevelLosePanel()
         {
-            if (UIManager.Instance.WinLevelUI != null)
+            if (!isLevelActive)
             {
-                UIManager.Instance.WinLevelUI.gameObject.SetActive(true);
+                return;
+            }
+
+            StopLevelLosePanel();
+            loseCoroutine = LevelLosePanel();
+            StartCoroutine(loseCoroutine);
+        }
+
+        private void StopLevelLosePanel()
+        {
+            if (loseCoroutine != null)
+            {
+                StopCoroutine(loseCoroutine);
+                loseCoroutine = null;
             }
         }
     }

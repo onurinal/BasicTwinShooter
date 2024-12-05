@@ -6,6 +6,7 @@ namespace BasicTowerDefender.Manager
 {
     public class SpawnAllyManager : MonoBehaviour
     {
+        [SerializeField] private LevelManager levelManager;
         [SerializeField] private Transform enemySpawner;
         private Camera mainCamera;
         private Allies ally;
@@ -39,14 +40,14 @@ namespace BasicTowerDefender.Manager
 
         private void AttemptToCreateAlly()
         {
-            var currentScore = UIManager.Instance.CurrentScore;
+            var currentPoint = levelManager.CurrentPoint;
 
             if (ally == null)
             {
                 return;
             }
 
-            if (currentScore >= ally.PointCost && allySelectManager.IsAllyReadyToCreate && !CheckOverlap())
+            if (currentPoint >= ally.PointCost && allySelectManager.IsAllyReadyToCreate && !CheckOverlap())
             {
                 CreateAlly();
                 Destroy(selectedAllySprite.gameObject);

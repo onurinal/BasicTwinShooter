@@ -30,11 +30,18 @@ namespace BasicTowerDefender.Level
             {
                 StartCoroutine(WaitForSplashSceneLoad());
             }
+
+            Debug.Log(SceneManager.sceneCountInBuildSettings);
         }
 
         public void LoadNextScene()
         {
-            SceneManager.LoadScene(currentScene + 1);
+            if (currentScene + 1 < SceneManager.sceneCountInBuildSettings)
+            {
+                SceneManager.LoadScene(currentScene + 1);
+            }
+
+            Time.timeScale = 1;
         }
 
         public void LoadMainMenu()
@@ -52,6 +59,11 @@ namespace BasicTowerDefender.Level
         public void QuitGame()
         {
             Application.Quit();
+        }
+
+        public string GetSceneName()
+        {
+            return SceneManager.GetActiveScene().name;
         }
 
         private IEnumerator WaitForSplashSceneLoad()

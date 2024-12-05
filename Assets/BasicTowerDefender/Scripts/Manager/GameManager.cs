@@ -31,6 +31,7 @@ namespace BasicTowerDefender.Manager
         private void Start()
         {
             ResetGame();
+            levelManager.Initialize();
             UIManager.Instance.Initialize(this);
         }
 
@@ -47,7 +48,7 @@ namespace BasicTowerDefender.Manager
             if (currentPlayerLife <= 0)
             {
                 Debug.Log("Game Over");
-                levelManager.LevelLost();
+                levelManager.StartLevelLosePanel();
             }
 
             currentHealth = maxHealth;
