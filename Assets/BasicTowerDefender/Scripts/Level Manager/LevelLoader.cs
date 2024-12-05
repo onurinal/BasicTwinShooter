@@ -30,8 +30,6 @@ namespace BasicTowerDefender.Level
             {
                 StartCoroutine(WaitForSplashSceneLoad());
             }
-
-            Debug.Log(SceneManager.sceneCountInBuildSettings);
         }
 
         public void LoadNextScene()

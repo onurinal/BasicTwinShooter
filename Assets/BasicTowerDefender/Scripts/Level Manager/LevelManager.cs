@@ -25,8 +25,9 @@ namespace BasicTowerDefender.Manager
 
         private float currentTime;
         private bool isLevelTimeOver;
-        public int CurrentPoint { get; set; }
         private bool isLevelActive;
+
+        public int CurrentPoint { get; set; }
 
         public void Initialize()
         {
