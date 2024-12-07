@@ -47,6 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 416216435297211045}
   levelCompleteSound: {fileID: 8300000, guid: eaf48ae0366fb29499b24dbb0d1c6ae0, type: 3}
+  gameplayMusic: {fileID: 8300000, guid: b24ab697ab2871c47867a21fc6d71a36, type: 3}
 --- !u!82 &416216435297211045
 AudioSource:
   m_ObjectHideFlags: 0
@@ -57,7 +58,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 8caa4b46a32b16a429235ae621febf63, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.1
   m_Pitch: 1

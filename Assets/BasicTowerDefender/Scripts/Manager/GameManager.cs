@@ -32,7 +32,7 @@ namespace BasicTowerDefender.Manager
         {
             ResetGame();
             levelManager.Initialize();
-            UIManager.Instance.Initialize(this);
+            GameplayUIManager.Instance.Initialize(this);
         }
 
         private void ResetGame()

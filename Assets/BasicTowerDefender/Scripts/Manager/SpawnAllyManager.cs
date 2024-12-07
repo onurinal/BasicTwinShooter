@@ -53,7 +53,7 @@ namespace BasicTowerDefender.Manager
                 Destroy(selectedAllySprite.gameObject);
                 allySelectManager.IsAllyReadyToCreate = false;
                 CleanSelectedAfterCreation();
-                UIManager.Instance.SpendScore(ally.PointCost);
+                GameplayUIManager.Instance.SpendScore(ally.PointCost);
             }
         }
 

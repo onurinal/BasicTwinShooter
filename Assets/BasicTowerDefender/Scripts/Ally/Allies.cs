@@ -18,7 +18,7 @@ namespace BasicTowerDefender.Ally
 
         public void AddPointToScore(int points)
         {
-            UIManager.Instance.AddToScore(points);
+            GameplayUIManager.Instance.AddToScore(points);
         }
 
         public void TakeDamage(int damage)

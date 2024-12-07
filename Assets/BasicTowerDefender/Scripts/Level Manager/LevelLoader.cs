@@ -9,6 +9,8 @@ namespace BasicTowerDefender.Level
     {
         private int currentScene;
 
+        public float WaitSplashScreenTime { get; } = 3f;
+
         public static LevelLoader Instance;
 
         private void Awake()
@@ -48,6 +50,11 @@ namespace BasicTowerDefender.Level
             Time.timeScale = 1;
         }
 
+        public void LoadOptionsMenu()
+        {
+            SceneManager.LoadScene("Option Menu");
+        }
+
         public void LoadSameScene()
         {
             SceneManager.LoadScene(currentScene);
@@ -66,7 +73,7 @@ namespace BasicTowerDefender.Level
 
         private IEnumerator WaitForSplashSceneLoad()
         {
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(WaitSplashScreenTime);
             LoadNextScene();
         }
     }

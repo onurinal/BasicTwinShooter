@@ -95,7 +95,7 @@ namespace BasicTowerDefender.Manager
         private IEnumerator LevelLosePanel()
         {
             isLevelActive = false;
-            UIManager.Instance.LoseLevelUI.gameObject.SetActive(true);
+            GameplayUIManager.Instance.LoseLevelUI.gameObject.SetActive(true);
             Time.timeScale = 0;
             yield return new WaitForSecondsRealtime(waitWinLosePanel);
         }
@@ -103,7 +103,7 @@ namespace BasicTowerDefender.Manager
         private IEnumerator LevelWinPanel()
         {
             isLevelActive = false;
-            UIManager.Instance.WinLevelUI.gameObject.SetActive(true);
+            GameplayUIManager.Instance.WinLevelUI.gameObject.SetActive(true);
             AudioManager.Instance.PlayLevelCompleteSound();
             Time.timeScale = 0;
             yield return new WaitForSecondsRealtime(waitWinLosePanel);

@@ -46,4 +46,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelManager: {fileID: 0}
   maxPlayerLife: 1
-  maxHealth: 100
+  maxHealth: 50

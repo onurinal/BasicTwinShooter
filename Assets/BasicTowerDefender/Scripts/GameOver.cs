@@ -11,7 +11,7 @@ public class GameOver : MonoBehaviour
         {
             var damage = enemy.GetDamageToPlayer();
             GameManager.Instance.PlayerTakeDamage(damage);
-            UIManager.Instance.UpdatePlayerLifeAndHealth();
+            GameplayUIManager.Instance.UpdatePlayerLifeAndHealth();
             Destroy(enemy.gameObject);
         }
     }

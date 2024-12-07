@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections;
+using BasicTowerDefender.Level;
+using UnityEngine;
 
 namespace BasicTowerDefender.Manager
 {
@@ -6,6 +9,9 @@ namespace BasicTowerDefender.Manager
     {
         [SerializeField] AudioSource audioSource;
         [SerializeField] private AudioClip levelCompleteSound;
+        [SerializeField] private AudioClip gameplayMusic;
+
+        private LevelLoader levelLoader;
 
         public static AudioManager Instance;
 
@@ -18,13 +24,26 @@ namespace BasicTowerDefender.Manager
             else
             {
                 Instance = this;
+                DontDestroyOnLoad(this.gameObject);
             }
+        }
+
+        private void Start()
+        {
+            levelLoader = LevelLoader.Instance;
+            StartCoroutine(PlayGameplayMusic());
         }
 
         public void PlayLevelCompleteSound()
         {
             audioSource.clip = levelCompleteSound;
             audioSource.PlayOneShot(levelCompleteSound);
+        }
+
+        private IEnumerator PlayGameplayMusic()
+        {
+            yield return new WaitForSeconds(levelLoader.WaitSplashScreenTime);
+            audioSource.PlayOneShot(gameplayMusic);
         }
     }
 }
