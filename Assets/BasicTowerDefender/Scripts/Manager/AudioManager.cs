@@ -11,6 +11,8 @@ namespace BasicTowerDefender.Manager
         [SerializeField] private AudioClip levelCompleteSound;
         [SerializeField] private AudioClip gameplayMusic;
 
+        public const float DefaultMasterVolume = 0.5f;
+
         private LevelLoader levelLoader;
 
         public static AudioManager Instance;
@@ -30,6 +32,7 @@ namespace BasicTowerDefender.Manager
 
         private void Start()
         {
+            SetMasterVolume();
             levelLoader = LevelLoader.Instance;
             StartCoroutine(PlayGameplayMusic());
         }
@@ -44,6 +47,11 @@ namespace BasicTowerDefender.Manager
         {
             yield return new WaitForSeconds(levelLoader.WaitSplashScreenTime);
             audioSource.PlayOneShot(gameplayMusic);
+        }
+
+        public void SetMasterVolume()
+        {
+            audioSource.volume = PlayerPrefController.GetMasterVolume();
         }
     }
 }
