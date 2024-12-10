@@ -168,10 +168,10 @@ RectTransform:
   m_Children:
   - {fileID: 1144935589563397580}
   - {fileID: 8873225635913270168}
-  - {fileID: 1356004001211663985}
-  - {fileID: 2152649763356142310}
   - {fileID: 4531435448954159532}
   - {fileID: 4366063723076201541}
+  - {fileID: 1356004001211663985}
+  - {fileID: 2152649763356142310}
   m_Father: {fileID: 4937708583204955207}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -2067,7 +2067,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7527205511942136417}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2449,7 +2449,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8283641040182847571}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2511,7 +2511,7 @@ GameObject:
   - component: {fileID: 4937708583204955207}
   - component: {fileID: 6857121611491404943}
   m_Layer: 0
-  m_Name: UIManager
+  m_Name: GameplayUI Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2545,9 +2545,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 375a1d9aacac4611aaee802afc00284c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelText: {fileID: 1114118992042196989}
+  levelManager: {fileID: 0}
   winLevelUI: {fileID: 8283641040182847571}
   loseLevelUI: {fileID: 7527205511942136417}
+  levelText: {fileID: 1114118992042196989}
   scoreText: {fileID: 6845226765983888590}
   playerLifeText: {fileID: 9165773009131113482}
   playerHealthText: {fileID: 8525196254445053531}

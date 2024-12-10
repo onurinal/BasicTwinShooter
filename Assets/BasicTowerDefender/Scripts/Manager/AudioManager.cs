@@ -11,7 +11,7 @@ namespace BasicTowerDefender.Manager
         [SerializeField] private AudioClip levelCompleteSound;
         [SerializeField] private AudioClip gameplayMusic;
 
-        public const float DefaultMasterVolume = 0.5f;
+        public const float DefaultMasterVolume = 0.25f;
 
         private LevelLoader levelLoader;
 

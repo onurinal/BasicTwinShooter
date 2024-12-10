@@ -33,15 +33,6 @@ namespace BasicTowerDefender.Enemy
             UpdateAttackAnimation();
         }
 
-        private void OnDestroy()
-        {
-            if (isAlive)
-            {
-                levelManager.KilledEnemies();
-                isAlive = false;
-            }
-        }
-
         private void Move()
         {
             transform.Translate(Vector2.left * (enemyProperties.MoveSpeed * Time.deltaTime));
@@ -91,7 +82,12 @@ namespace BasicTowerDefender.Enemy
             currentHealth -= damage;
             if (currentHealth <= 0)
             {
-                Destroy(gameObject);
+                if (isAlive)
+                {
+                    levelManager.KilledEnemies();
+                    isAlive = false;
+                    Destroy(gameObject);
+                }
             }
         }
     }

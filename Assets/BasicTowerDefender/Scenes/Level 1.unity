@@ -670,10 +670,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 14189001095542996, guid: 6e913f4c06907124c92bf2a0b33a55ef, type: 3}
+      propertyPath: levelManager
+      value: 
+      objectReference: {fileID: 1719913260}
+    - target: {fileID: 2592740649621689926, guid: 6e913f4c06907124c92bf2a0b33a55ef, type: 3}
+      propertyPath: levelManager
+      value: 
+      objectReference: {fileID: 1719913260}
     - target: {fileID: 4310426636107919837, guid: 6e913f4c06907124c92bf2a0b33a55ef, type: 3}
       propertyPath: spawnAllyManager
       value: 
       objectReference: {fileID: 1598337121}
+    - target: {fileID: 4650678303930693775, guid: 6e913f4c06907124c92bf2a0b33a55ef, type: 3}
+      propertyPath: levelManager
+      value: 
+      objectReference: {fileID: 1719913260}
+    - target: {fileID: 6494854476936533775, guid: 6e913f4c06907124c92bf2a0b33a55ef, type: 3}
+      propertyPath: levelManager
+      value: 
+      objectReference: {fileID: 1719913260}
     - target: {fileID: 6570698437957126638, guid: 6e913f4c06907124c92bf2a0b33a55ef, type: 3}
       propertyPath: m_Name
       value: Ally Select Manager
@@ -788,6 +804,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3792423565497551509, guid: fbb0d07394d415e48a981a26940b728a, type: 3}
+      propertyPath: levelTime
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 3792423565497551509, guid: fbb0d07394d415e48a981a26940b728a, type: 3}
       propertyPath: uiTimeManager
       value: 

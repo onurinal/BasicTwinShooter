@@ -52,5 +52,5 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   waitWinLosePanel: 3
-  levelTime: 5
+  levelTime: 1
   point: 1000

@@ -25,9 +25,9 @@ namespace BasicTowerDefender.Manager
 
         private float currentTime;
         private bool isLevelTimeOver;
-        private bool isLevelActive;
 
         public int CurrentPoint { get; set; }
+        public bool IsLevelOver { get; private set; } = false;
 
         public void Initialize()
         {
@@ -56,7 +56,7 @@ namespace BasicTowerDefender.Manager
 
         private void SetupNewLevel()
         {
-            isLevelActive = true;
+            IsLevelOver = false;
             uiTimeManager.Initialize(levelTime);
             numberOfEnemies = 0;
             CurrentPoint = point;
@@ -94,29 +94,24 @@ namespace BasicTowerDefender.Manager
 
         private IEnumerator LevelLosePanel()
         {
-            isLevelActive = false;
             GameplayUIManager.Instance.LoseLevelUI.gameObject.SetActive(true);
             Time.timeScale = 0;
+            IsLevelOver = true;
             yield return new WaitForSecondsRealtime(waitWinLosePanel);
         }
 
         private IEnumerator LevelWinPanel()
         {
-            isLevelActive = false;
             GameplayUIManager.Instance.WinLevelUI.gameObject.SetActive(true);
             AudioManager.Instance.PlayLevelCompleteSound();
             Time.timeScale = 0;
+            IsLevelOver = true;
             yield return new WaitForSecondsRealtime(waitWinLosePanel);
             LevelLoader.Instance.LoadNextScene();
         }
 
         private void StartLevelWinPanel()
         {
-            if (!isLevelActive)
-            {
-                return;
-            }
-
             StopLevelWinPanel();
             winCoroutine = LevelWinPanel();
             StartCoroutine(winCoroutine);
@@ -133,11 +128,6 @@ namespace BasicTowerDefender.Manager
 
         public void StartLevelLosePanel()
         {
-            if (!isLevelActive)
-            {
-                return;
-            }
-
             StopLevelLosePanel();
             loseCoroutine = LevelLosePanel();
             StartCoroutine(loseCoroutine);
