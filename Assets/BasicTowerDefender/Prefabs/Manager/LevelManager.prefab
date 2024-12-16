@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec8806a7109e40c0833bd81d20b019ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  allySelectManager: {fileID: 4310426636107919837, guid: 6e913f4c06907124c92bf2a0b33a55ef, type: 3}
   uiTimeManager: {fileID: 0}
   spawners:
   - {fileID: 0}
@@ -52,5 +53,5 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   waitWinLosePanel: 3
-  levelTime: 1
+  levelTime: 5
   point: 1000

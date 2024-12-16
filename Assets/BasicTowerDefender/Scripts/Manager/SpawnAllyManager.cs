@@ -6,10 +6,10 @@ namespace BasicTowerDefender.Manager
 {
     public class SpawnAllyManager : MonoBehaviour
     {
-        [SerializeField] private LevelManager levelManager;
         [SerializeField] private Transform enemySpawner;
+        [SerializeField] private LevelManager levelManager;
         private Camera mainCamera;
-        private Allies ally;
+        private Allies allyPrefab;
         private AllySelectManager allySelectManager;
         private SpriteRenderer selectedAllySprite;
 
@@ -28,12 +28,17 @@ namespace BasicTowerDefender.Manager
 
         private void OnMouseDown()
         {
+            if (levelManager.IsLevelOver)
+            {
+                return;
+            }
+
             AttemptToCreateAlly();
         }
 
-        public void SetSelectedAlly(Allies allySelected, SpriteRenderer selectedAllySprite, AllySelectManager allySelectManager)
+        public void SetSelectedAlly(Allies allySelectedPrefab, SpriteRenderer selectedAllySprite, AllySelectManager allySelectManager)
         {
-            ally = allySelected;
+            allyPrefab = allySelectedPrefab;
             this.selectedAllySprite = selectedAllySprite;
             this.allySelectManager = allySelectManager;
         }
@@ -42,18 +47,18 @@ namespace BasicTowerDefender.Manager
         {
             var currentPoint = levelManager.CurrentPoint;
 
-            if (ally == null)
+            if (allyPrefab == null)
             {
                 return;
             }
 
-            if (currentPoint >= ally.PointCost && allySelectManager.IsAllyReadyToCreate && !CheckOverlap())
+            if (currentPoint >= allyPrefab.PointCost && allySelectManager.IsAllyReadyToCreate && !CheckOverlap())
             {
                 CreateAlly();
                 Destroy(selectedAllySprite.gameObject);
                 allySelectManager.IsAllyReadyToCreate = false;
                 CleanSelectedAfterCreation();
-                GameplayUIManager.Instance.SpendScore(ally.PointCost);
+                GameplayUIManager.Instance.SpendScore(allyPrefab.PointCost);
             }
         }
 
@@ -65,9 +70,9 @@ namespace BasicTowerDefender.Manager
             var newPosition = SnapDefenderToGrid(currentMousePosition);
             if (Input.GetMouseButtonDown(0))
             {
-                if (ally != null)
+                if (allyPrefab != null)
                 {
-                    var theAlly = Instantiate(ally, newPosition, Quaternion.identity);
+                    var theAlly = Instantiate(allyPrefab, newPosition, Quaternion.identity);
                     var defender = theAlly.gameObject.GetComponent<Defender>();
                     if (defender != null)
                     {
@@ -82,9 +87,9 @@ namespace BasicTowerDefender.Manager
                 var touchPosition = mainCamera.ScreenToWorldPoint(touch.position);
                 touchPosition.z = 0f;
                 var newPosition = SnapDefenderToGrid(touchPosition);
-                if (ally != null)
+                if (allyPrefab != null)
                 {
-                    var theAlly = Instantiate(ally, newPosition, Quaternion.identity);
+                    var theAlly = Instantiate(allyPrefab, newPosition, Quaternion.identity);
                     var defender = theAlly.gameObject.GetComponent<Defender>();
                     if (defender != null)
                     {

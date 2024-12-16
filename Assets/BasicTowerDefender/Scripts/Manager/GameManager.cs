@@ -4,6 +4,7 @@ namespace BasicTowerDefender.Manager
 {
     public class GameManager : MonoBehaviour
     {
+        [SerializeField] private AllySelectManager allySelectManager;
         [SerializeField] private LevelManager levelManager;
         [SerializeField] private int maxPlayerLife = 3;
         [SerializeField] private int maxHealth = 100;
@@ -31,7 +32,8 @@ namespace BasicTowerDefender.Manager
         private void Start()
         {
             ResetGame();
-            levelManager.Initialize();
+            allySelectManager.Initialize();
+            levelManager.Initialize(allySelectManager);
             GameplayUIManager.Instance.Initialize(this);
         }
 

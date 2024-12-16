@@ -12,6 +12,7 @@ namespace BasicTowerDefender.Manager
         [SerializeField] private UITimeManager uiTimeManager;
         [SerializeField] private List<EnemySpawner> spawners;
         [SerializeField] private float waitWinLosePanel;
+        private ISelectionController iSelectionController;
         private int numberOfEnemies;
 
         [Tooltip("Level time in seconds")] [SerializeField]
@@ -29,10 +30,11 @@ namespace BasicTowerDefender.Manager
         public int CurrentPoint { get; set; }
         public bool IsLevelOver { get; private set; } = false;
 
-        public void Initialize()
+        public void Initialize(ISelectionController iSelectionController)
         {
             InitializeSpawners();
             SetupNewLevel();
+            this.iSelectionController = iSelectionController;
         }
 
         private void Update()
@@ -97,7 +99,8 @@ namespace BasicTowerDefender.Manager
             GameplayUIManager.Instance.LoseLevelUI.gameObject.SetActive(true);
             Time.timeScale = 0;
             IsLevelOver = true;
-            yield return new WaitForSecondsRealtime(waitWinLosePanel);
+            iSelectionController.DeselectedAlly();
+            yield return null;
         }
 
         private IEnumerator LevelWinPanel()
@@ -106,6 +109,7 @@ namespace BasicTowerDefender.Manager
             AudioManager.Instance.PlayLevelCompleteSound();
             Time.timeScale = 0;
             IsLevelOver = true;
+            iSelectionController.DeselectedAlly();
             yield return new WaitForSecondsRealtime(waitWinLosePanel);
             LevelLoader.Instance.LoadNextScene();
         }

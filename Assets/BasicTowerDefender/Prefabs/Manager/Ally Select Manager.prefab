@@ -556,7 +556,6 @@ MonoBehaviour:
   - {fileID: 2592740649621689926}
   - {fileID: 14189001095542996}
   spawnAllyManager: {fileID: 0}
-  isAllyReadyToCreate: 0
 --- !u!1 &7200098479551791692
 GameObject:
   m_ObjectHideFlags: 0
@@ -633,7 +632,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 1545257373, guid: 66982a4d4ce9e644b8a9a2721276a59b, type: 3}
-  m_Color: {r: 0.4264151, g: 0.4264151, b: 0.4264151, a: 1}
+  m_Color: {r: 0.42745098, g: 0.42745098, b: 0.42745098, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

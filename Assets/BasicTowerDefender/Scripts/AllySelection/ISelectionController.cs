@@ -3,5 +3,6 @@
     public interface ISelectionController
     {
         void SelectedAlly(AllySelection selection);
+        void DeselectedAlly();
     }
 }

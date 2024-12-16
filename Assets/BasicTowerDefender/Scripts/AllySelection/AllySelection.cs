@@ -5,10 +5,10 @@ namespace BasicTowerDefender.Manager
 {
     public class AllySelection : MonoBehaviour
     {
-        [SerializeField] private LevelManager levelManager;
         [SerializeField] private SpriteRenderer allySprite;
-        private ISelectionController iSelectionController;
         [SerializeField] private Allies allyPrefab;
+        private ISelectionController iSelectionController;
+        private LevelManager levelManager;
 
         [SerializeField] private SpriteRenderer moveableSprite;
         private SpriteRenderer moveableSpriteInstance;
@@ -17,40 +17,30 @@ namespace BasicTowerDefender.Manager
         public Allies AllyPrefab => allyPrefab;
         public bool IsAllySelected => isAllySelected;
 
-        public void Initialize(ISelectionController iSelectionController)
+        public void Initialize(ISelectionController iSelectionController, LevelManager levelManager)
         {
             this.iSelectionController = iSelectionController;
+            this.levelManager = levelManager;
         }
 
         private void OnMouseDown()
         {
+            if (levelManager.IsLevelOver)
+            {
+                return;
+            }
+
             iSelectionController.SelectedAlly(this);
         }
 
         public void UnpickedAlly()
         {
-            // if (levelManager.IsLevelOver)
-            // {
-            //     return;
-            // }
-
-            if (moveableSpriteInstance != null)
-            {
-                Destroy(moveableSpriteInstance.gameObject);
-            }
-
-
             allySprite.color = new Color32(109, 109, 109, 255);
             isAllySelected = false;
         }
 
         public SpriteRenderer PickedAlly()
         {
-            if (levelManager.IsLevelOver)
-            {
-                return null;
-            }
-
             allySprite.color = Color.white;
             isAllySelected = true;
             moveableSpriteInstance = Instantiate(moveableSprite, transform.position, Quaternion.identity);

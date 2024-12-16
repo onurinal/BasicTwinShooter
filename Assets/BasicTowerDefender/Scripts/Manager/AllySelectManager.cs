@@ -7,6 +7,7 @@ namespace BasicTowerDefender.Manager
     {
         [SerializeField] private List<AllySelection> allies;
         [SerializeField] private SpawnAllyManager spawnAllyManager;
+        [SerializeField] private LevelManager levelManager;
 
         private SpriteRenderer moveableSelectedSprite;
 
@@ -16,16 +17,17 @@ namespace BasicTowerDefender.Manager
 
         public List<AllySelection> Allies => allies;
 
-        private void Start()
+        public void Initialize()
         {
             if (mainCamera == null)
             {
                 mainCamera = Camera.main;
             }
 
+            levelManager.Initialize(this);
             foreach (var allySelection in allies)
             {
-                allySelection.Initialize(this);
+                allySelection.Initialize(this, levelManager);
             }
         }
 
@@ -36,21 +38,33 @@ namespace BasicTowerDefender.Manager
 
         public void SelectedAlly(AllySelection selection)
         {
+            // if player choose already selected defender then deselect it
             if (selection.IsAllySelected)
             {
-                selection.UnpickedAlly();
+                DeselectedAlly();
                 IsAllyReadyToCreate = false;
                 return;
+            }
+
+            // if player choose other than selected defender then deselect other defenders
+            DeselectedAlly();
+
+            moveableSelectedSprite = selection.PickedAlly();
+            IsAllyReadyToCreate = true;
+            spawnAllyManager.SetSelectedAlly(selection.AllyPrefab, moveableSelectedSprite, this);
+        }
+
+        public void DeselectedAlly()
+        {
+            if (moveableSelectedSprite != null)
+            {
+                Destroy(moveableSelectedSprite.gameObject);
             }
 
             for (var i = 0; i < allies.Count; i++)
             {
                 allies[i].UnpickedAlly();
             }
-
-            moveableSelectedSprite = selection.PickedAlly();
-            spawnAllyManager.SetSelectedAlly(selection.AllyPrefab, moveableSelectedSprite, this);
-            IsAllyReadyToCreate = true;
         }
 
         private void DragSelectedAlly()
