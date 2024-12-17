@@ -14,4 +14,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/BasicTowerDefender/Scenes/Level 1.unity
     guid: d77928d4b7d016a4d80f2dd0ad4955cc
+  - enabled: 1
+    path: Assets/BasicTowerDefender/Scenes/Level 2.unity
+    guid: a57380ef2813c0846a3498d4837b2d33
+  - enabled: 1
+    path: Assets/BasicTowerDefender/Scenes/Level 3.unity
+    guid: 636f4c2e4df4c4f4e95cfb4861786799
+  - enabled: 1
+    path: Assets/BasicTowerDefender/Scenes/Option Menu.unity
+    guid: b404cea56447f754b83ea820899272b1
   m_configObjects: {}
