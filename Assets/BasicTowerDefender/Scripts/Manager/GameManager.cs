@@ -31,6 +31,7 @@ namespace BasicTowerDefender.Manager
 
         private void Start()
         {
+            Application.targetFrameRate = 60;
             ResetGame();
             allySelectManager.Initialize();
             levelManager.Initialize(allySelectManager);

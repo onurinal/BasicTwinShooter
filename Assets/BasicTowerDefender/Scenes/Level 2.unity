@@ -865,7 +865,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3792423565497551509, guid: fbb0d07394d415e48a981a26940b728a, type: 3}
       propertyPath: levelTime
-      value: 10
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3792423565497551509, guid: fbb0d07394d415e48a981a26940b728a, type: 3}
       propertyPath: uiTimeManager

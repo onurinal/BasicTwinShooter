@@ -43,7 +43,7 @@ namespace BasicTowerDefender.Manager
         {
             allySprite.color = Color.white;
             isAllySelected = true;
-            moveableSpriteInstance = Instantiate(moveableSprite, transform.position, Quaternion.identity);
+            moveableSpriteInstance = Instantiate(moveableSprite, transform.position + new Vector3(0f, 0.5f, 0f), Quaternion.identity);
             return moveableSpriteInstance;
         }
     }

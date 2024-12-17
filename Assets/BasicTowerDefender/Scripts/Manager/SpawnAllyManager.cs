@@ -145,19 +145,36 @@ namespace BasicTowerDefender.Manager
         private bool CheckOverlap()
         {
 #if UNITY_EDITOR
+
             var currentMousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
             currentMousePosition.z = 0f;
             var newPosition = SnapDefenderToGrid(currentMousePosition);
-            var hit = Physics2D.Raycast(newPosition, Vector2.zero);
+            if (CheckOverlapPosition(newPosition))
+            {
+                return true;
+            }
+
+            return false;
 #else
             if (Input.touchCount > 0)
             {
                 var touch = Input.GetTouch(0);
                 var touchPosition = mainCamera.ScreenToWorldPoint(touch.position);
                 touchPosition.z = 0f;
-                var hit = Physics2D.Raycast(touchPosition, Vector2.zero);
+                if (CheckOverlapPosition(touchPosition))
+                {
+                    return true;
+                }
             }
+            
+            return false;
 #endif
+        }
+
+        private bool CheckOverlapPosition(Vector3 position)
+        {
+            var hit = Physics2D.Raycast(position, Vector2.zero);
+
             var allies = hit.collider.GetComponentInParent<Allies>();
             if (allies != null)
             {

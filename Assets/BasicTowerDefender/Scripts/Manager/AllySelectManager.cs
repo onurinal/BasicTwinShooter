@@ -74,11 +74,14 @@ namespace BasicTowerDefender.Manager
                 return;
             }
 #if UNITY_EDITOR
-            var currentMousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-            currentMousePosition.z = 0;
-
-            moveableSelectedSprite.transform.position = currentMousePosition + new Vector3(0, 0.5f, 0);
+            DragWithMouse();
 #else
+            DragWithTouch();
+#endif
+        }
+
+        private void DragWithTouch()
+        {
             if (Input.touchCount > 0)
             {
                 var touch = Input.GetTouch(0);
@@ -89,7 +92,14 @@ namespace BasicTowerDefender.Manager
                     moveableSelectedSprite.transform.position = touchPosition + new Vector3(0, 0.5f, 0);
                 }
             }
-#endif
+        }
+
+        private void DragWithMouse()
+        {
+            var currentMousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+            currentMousePosition.z = 0;
+
+            moveableSelectedSprite.transform.position = currentMousePosition + new Vector3(0, 0.5f, 0);
         }
     }
 }
