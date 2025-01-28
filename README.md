@@ -1,3 +1,3 @@
 
-- SpaceShooter
-- ![image_alt](https://github.com/onurinal/BasicTowerDefender/blob/develop/BasicTowerDefender.png?raw=true)
+- Basic Twin Shooter
+- ![image_alt](https://github.com/onurinal/BasicTwinShooter/blob/develop/BasicTwinShooter.png?raw=true)
